@@ -14,7 +14,7 @@ from pandas.api.types import (
 )
 ########### Set up documents data set ##############
 # link to document data (*should not change*)
-document_data_link = 'https://raw.githubusercontent.com/sdannels/Federal_Circuit_Decisions_Beta/main/Data/documents.tab'
+document_data_link = 'https://raw.githubusercontent.com/FederalCircuitCompendium/FCDPWebapp/main/Data/documents.tab'
 
 # link to document codebook
 document_codebook_link = 'https://dataverse.harvard.edu/api/access/datafile/6907843'
@@ -31,7 +31,7 @@ dtype_dict = {'uniqueID': str, 'docYear': int, 'origin': 'category',
 
 ########## Set up dockets data set ################
 # link to docket data (*should not change*)
-docket_data_link = 'https://raw.githubusercontent.com/sdannels/Federal_Circuit_Decisions_Beta/main/Data/dockets.tab'
+docket_data_link = 'https://raw.githubusercontent.com/FederalCircuitCompendium/FCDPWebapp/main/Data/dockets.tab'
 
 # link to dockets codebook
 docket_codebook_link = 'https://empirical.law.uiowa.edu/sites/empirical.law.uiowa.edu/files/wysiwyg_uploads/codebook_for_the_docket_dataset_-_2021-08-24.pdf'
