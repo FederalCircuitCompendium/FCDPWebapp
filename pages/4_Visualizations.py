@@ -15,6 +15,7 @@ plot_section = st.container()
 ## header section
 with header:
     st.title('Visualizations')
+    st.write("""This page provides dynamic visualations based on parameters selected from the document and dockets datasets. It may take some time to load.""")    
 
 # read in data from dockets page (stored in session state)
 if 'df_dock' in st.session_state:
