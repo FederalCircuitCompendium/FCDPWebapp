@@ -36,6 +36,9 @@ docket_data_link = 'https://raw.githubusercontent.com/FederalCircuitCompendium/F
 # link to dockets codebook
 docket_codebook_link = 'https://empirical.law.uiowa.edu/sites/empirical.law.uiowa.edu/files/wysiwyg_uploads/codebook_for_the_docket_dataset_-_2021-08-24.pdf'
 
+# link to CAFC website
+cafc_website = 'https://cafc.uscourts.gov/'
+
 # define datatypes for docket variables that need coverting
 # if adding variables and filtering doesn't automatically work,
 # add correct data type to dictionary below and clear cache on website

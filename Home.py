@@ -7,7 +7,7 @@ Created on Thu Feb 16 20:00:30 2023
 
 import pandas as pd
 import streamlit as st
-from config import document_data_link, document_codebook_link, dtype_dict, filter_dataframe, load_data
+from config import document_data_link, document_codebook_link, dtype_dict, filter_dataframe, load_data, cafc_website
 
 # set screen display to wide
 st.set_page_config(layout="wide")
@@ -18,55 +18,25 @@ data_section = st.container()
 
 ## header section
 with header:
-    st.title('Federal Circuit Decisions Database')
+    st.title('The Federal Circuit Database Project')
     # link to code book
-    st.write("""The Compendium of Federal Circuit decisions is a a database created to both standardize and
-                analyze decisions of the United States Court of Appeals for the Federal Circuit.
+    st.write("""The Federal Circuit Database Project a a database created to provide a central repository for
+                researchers of the United States Court of Appeals for the Federal Circuit.
                 The Compendium includes all opinions, orders, and summary affirmances that were
                 released on the Federal Circuit’s website—essentially all opinions since 2004 and 
                 all summary affirmances since 2007, along with numerous orders and other documents. 
-                Multiple fields are coded in a standardized format that will allow future 
-                researchers to avoid recollecting fundamental fields such as case names or opinion dates. 
-                The database also has the capacity for expansion, and new information about the decisions can 
-                easily be added.  Public access to the database is provided in an easy-to-use web-based 
-                interface that allows for immediate visualization of data.""")
-    st.write("[The current codebook for the document dataset may be downloaded here.](%s)" % document_codebook_link)
+                Additional documents have been added from collections conducted on PACER. Fields are coded in a 
+                standardized format to allow future researchers to avoid recollecting fundamental fields such as 
+                case names or opinion dates. The database also has the capacity for expansion, and new information about the decisions can 
+                easily be added.  Public access to the database is provided via this web-based 
+                interface, which allows for immediate visualization of data. In addition, copies of the individual
+                datasets are archived at https://dataverse.harvard.edu/dataverse/CAFC_Dataset_Project""")
     
-## data section
-with data_section:
+    st.write("""Access the document and docket datasets by using the links to the left.""")
     
-    # read in data and display
-    df = load_data(document_data_link, 
-                   state_name = 'df', dtype_dict = dtype_dict)
+    st.write("""Note that the Federal Circuit Dataset Project is not affiliated with the United States Court of 
+                Appeals for the Federal Circuit. The court's website may be accessed at""",
+                "[https://cafc.uscourts.gov.](%s)" % cafc_website)
     
-    # set up columns for widgets
-    col1, col2 = st.columns(2)
+
     
-    # option to select columns to exclude from dataframe
-    with col1:
-        select_cols = st.checkbox("Click Here to Select Variables")
-        if select_cols:
-            df_cols = st.multiselect("Select Columns:", df.columns)
-            # include selected columns
-            df_cols = [col for col in df.columns if col in df_cols]
-            # return dataframe with selected columns
-            df = df[df_cols]
-    
-    # convert data to streamlit DataFrame with filtering options
-    with col2:
-        df_filtered = filter_dataframe(df)
-    st.dataframe(df_filtered, use_container_width = True)
-    
-    # function to convert data to csv
-    def convert_df(df):
-        return df.to_csv(index = False).encode('utf-8')
-    
-    # convert filtered data to csv
-    csv = convert_df(df_filtered)
-    
-    # download option
-    st.download_button(label = 'Download Dataset', 
-                       data = csv,
-                       file_name = 'federal_circuit_decisions_dataset.csv',
-                       mime = 'text/csv')
-    st.write('Note: Download will reflect any filtering performed on the data')
