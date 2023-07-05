@@ -9,6 +9,8 @@ import pandas as pd
 import streamlit as st
 from config import document_data_link, document_codebook_link, dtype_dict, filter_dataframe, load_data
 
+pd.set_option("styler.render.max_elements", 100_999_999)
+
 # set screen display to wide
 st.set_page_config(layout="wide")
 
@@ -22,13 +24,14 @@ with header:
     st.write("[The current codebook for the document dataset may be downloaded here.](%s)" % document_codebook_link)
 
 
+
 ## data section
-with data_section:
-    
+with data_section: 
+   
     # read in data and display
     df = load_data(document_data_link, 
                    state_name = 'df', dtype_dict = dtype_dict)
-    
+         
     # set up columns for widgets
     col1, col2 = st.columns(2)
     
@@ -45,7 +48,12 @@ with data_section:
     # convert data to streamlit DataFrame with filtering options
     with col2:
         df_filtered = filter_dataframe(df)
-    st.dataframe(df_filtered, use_container_width = True)
+        
+    # Display the filtered dataframe 
+    st.dataframe(df_filtered, use_container_width = True) 
+        
+    # create a dataframe with no commas in the year. However, it makes the dataset load much slower. head(1000) is used to mitigate this.    
+    ## st.dataframe(df_filtered.head(1000).style.format(thousands="", subset="docYear"), use_container_width = True)
     
     # function to convert data to csv
     def convert_df(df):
