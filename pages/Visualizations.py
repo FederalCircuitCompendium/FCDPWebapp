@@ -34,7 +34,7 @@ with map_section:
         return gpd.read_file(link)
 
     # read data
-    geo_data = read_geo("https://raw.githubusercontent.com/sdannels/Federal_Circuit_Decisions_Beta/main/Data/US_District_Court_Jurisdictions.geojson") # geojson data for plotting to district courts
+    geo_data = read_geo("https://raw.githubusercontent.com/FederalCircuitCompendium/FCDPWebapp/main/Data/US_District_Court_Jurisdictions.geojson") # geojson data for plotting to district courts
     
     court_names = ['wdky', 'edky', 'sdind', 'mdala', 'sdala', 'wdark', 'edark', 'ndcal', 'edcal', 'cdcal', 'dcolo', 'ddc', 'mdfla', 'ndfla', 'mdga', 'sdga', 'ndga', 'didaho', 'dkan', 'ndtex', 'sdtex', 'wdtex', 'wdmo', 'edmo', 'dmont', 'dneb',
                 'edwash', 'wdla', 'edla', 'dme', 'dmd', 'sdiowa', 'dnj', 'dnm', 'wdny', 'ndny', 'edny', 'wdnc', 'ednc', 'mdnc', 'dnd', 'ndohio', 'wdokla', 'edtex', 'dutah', 'edokla', 'dor', 'wdpa', 'edpa', 'mdpa', 'dsc', 'dsd', 'edtenn',
